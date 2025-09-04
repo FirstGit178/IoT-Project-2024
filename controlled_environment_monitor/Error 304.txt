@@ -1,0 +1,83 @@
+Problem updating channel. HTTP error code -304
+
+
+
+assert failed: tcpip_send_msg_wait_sem /IDF/components/lwip/lwip/src/api/tcpip.c:449 (Invalid mbox)
+
+
+Backtrace: 0x400827e5:0x3ffb1e80 0x4008c4c5:0x3ffb1ea0 0x4009196a:0x3ffb1ec0 0x400ee25a:0x3ffb1ff0 0x401002d9:0x3ffb2020 0x400ec0de:0x3ffb2060 0x400d6ae2:0x3ffb20b0 0x400d4c01:0x3ffb2120 0x4016a2c1:0x3ffb2180 0x400d30ea:0x3ffb21a0 0x400d39ae:0x3ffb21e0 0x400dcab4:0x3ffb2270 0x4008ebb2:0x3ffb2290
+
+
+
+
+ELF file SHA256: 4e1902c895f06e17
+
+Rebooting...
+ets Jun  8 2016 00:22:57
+
+rst:0xc (SW_CPU_RESET),boot:0x16 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:1
+load:0x3fff0030,len:4604
+ho 0 tail 12 room 4
+load:0x40078000,len:15488
+load:0x40080400,len:4
+load:0x40080404,len:3180
+entry 0x400805b8
+
+
+  Adafruit MPU6050 test!
+  MPU6050 Found
+
+
+
+
+
+**********************************************************
+
+
+ Distance: 8.38cm     
+ No Cargo on Board
+
+ ADC analog value = 4095
+ Fuel above Half
+
+assert failed: tcpip_send_msg_wait_sem /IDF/components/lwip/lwip/src/api/tcpip.c:449 (Invalid mbox)
+
+
+Backtrace: 0x400827e5:0x3ffb1e80 0x4008c4c5:0x3ffb1ea0 0x4009196a:0x3ffb1ec0 0x400ee25a:0x3ffb1ff0 0x401002d9:0x3ffb2020 0x400ec0de:0x3ffb2060 0x400d6ae2:0x3ffb20b0 0x400d4c01:0x3ffb2120 0x4016a2c1:0x3ffb2180 0x400d327a:0x3ffb21a0 0x400d39ae:0x3ffb21e0 0x400dcab4:0x3ffb2270 0x4008ebb2:0x3ffb2290
+
+
+
+
+ELF file SHA256: 3a17d0c2f06c84c9
+
+Rebooting...
+ets Jun  8 2016 00:22:57
+
+rst:0xc (SW_CPU_RESET),boot:0x16 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:1
+load:0x3fff0030,len:4604
+ho 0 tail 12 room 4
+load:0x40078000,len:15488
+load:0x40080400,len:4
+load:0x40080404,len:3180
+entry 0x400805b8
+
+
+  Adafruit MPU6050 test!
+**********************************************************************************************
+
+  unsigned long now = millis();
+
+  if (now - lastUpdate >= updateInterval) {
+    lastUpdate = now;
+
+    // Read motion interrupt status
+    uint8_t motion = mpu.getMotionInterruptStatus();
+
+    // Check if motion was detected (bit 6 set = 0x40)
+    int motionValue = (motion & 0x40) ? 2 : 1;
